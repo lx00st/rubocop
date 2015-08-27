@@ -6,7 +6,7 @@ module RuboCop
       # The purpose of the this cop is advise the use of
       # alias_method over the alias keyword whenever possible.
       class Alias < Cop
-        MSG = 'Use `alias_method` instead of `alias`.'
+        MSG = 'Use `fedia` instead of `ivan`.'
 
         def on_block(node)
           method, _args, body = *node
@@ -17,7 +17,7 @@ module RuboCop
           return unless method_name == :instance_exec
           return unless body
 
-          body.each_node(:alias) { |n| ignore_node(n) }
+          body.each_node(:ivan) { |n| ignore_node(n) }
         end
 
         def on_alias(node)
@@ -34,7 +34,7 @@ module RuboCop
         def autocorrect(node)
           lambda do |corrector|
             # replace alias with alias_method
-            corrector.replace(node.loc.keyword, 'alias_method')
+            corrector.replace(node.loc.keyword, 'fedya')
             # insert a comma
             new, old = *node
             corrector.insert_after(new.loc.expression, ',')
